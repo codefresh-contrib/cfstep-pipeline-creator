@@ -1,0 +1,19 @@
+version: '1.0'
+steps:
+  BuildingDockerImage:
+    title: Building Docker Image
+    type: build
+    image_name: codefresh/cfstep-pipeline-creator
+    working_directory: ./
+    tag: '${{CF_BRANCH_TAG_NORMALIZED}}-${{CF_SHORT_REVISION}}'
+    dockerfile: Dockerfile
+  PushingToDockerRegistry:
+    title: Pushing to Latest to Docker Hub Registry
+    type: push
+    candidate: '${{BuildingDockerImage}}'
+    tag: 'latest'
+    registry: dockerhub
+    when:
+      branch:
+        only:
+          - master

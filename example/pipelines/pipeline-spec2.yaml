@@ -1,0 +1,24 @@
+kind: pipeline
+metadata:
+  deprecate: {applicationPort: '8080', repoPipeline: true}
+  isPublic: false
+  labels:
+    tags: []
+  name: ubuntu
+  project: NONE
+spec:
+  contexts: [github]
+  stages: []
+  steps:
+    BuildingDockerImage:
+      dockerfile: {content: FROM ubuntu RUN echo "hello ubuntu user"}
+      image_name: ${{CF_OWNER}}/${{CF_REPO}}
+      tag: ${{CF_BRANCH_TAG_NORMALIZED}}
+      title: Building Docker Image
+      type: build
+      working_directory: ./
+  triggers: []
+  variables:
+  - {key: RUN_QA_TEST, value: 'true'}
+  - {key: TEST_ARRAY, value: task; task}
+version: '1.0'

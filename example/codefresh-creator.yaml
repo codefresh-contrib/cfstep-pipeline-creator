@@ -1,0 +1,8 @@
+-  repository: dustinvanbuskirk/repository-1
+   git_context: github
+   pipelines:
+     - ./pipelines/pipeline-spec1.yaml
+     - ./pipelines/pipeline-spec2.yaml
+-  repository: dustinvanbuskirk/repository-2
+   pipelines:
+     - ./pipelines/pipeline-spec2.yaml
