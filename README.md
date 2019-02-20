@@ -1,5 +1,7 @@
 # cfstep-pipeline-creator
 
+## This beta and the Docker image has not been pushed to Docker Hub at this time but you can build your own.
+
 Programmatically add repositories and pipelines to Codefresh Account using YAML file.
 
 Store your repositories and pipeline spec files in a separate repository and update them from a single location.
